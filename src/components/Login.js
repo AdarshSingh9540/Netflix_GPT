@@ -3,14 +3,26 @@ import Header from './Header'
 import { Validat } from '../utils/Validate';
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
+import {useNavigate } from 'react-router-dom';
+import {  updateProfile} from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/usersSlice';
+
+
 
 const Login = () => {
 
    const [isSignIn , setIsSignIn] = useState(true);
    const [errorMess ,setErrorMess] = useState(null);
+
+
+
    const email = useRef(null);
+   const name= useRef(null);
    const password = useRef(null);
-   
+   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
    const handleClick = () =>{
     const message =Validat(email.current.value,password.current.value);
     setErrorMess(message);
@@ -21,7 +33,23 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
-        console.log(user);
+        updateProfile(user, {
+          displayName: name.current.value,
+           photoURL: "https://avatars.githubusercontent.com/u/131537713?v=4"
+        }).then(() => {
+          const {uid,email, displayname , photoURL} = auth.currentUser;
+          dispatch(
+            addUser({
+              uid:uid,
+              email:email,
+              displayname:displayname,
+              photoURL:photoURL}));
+              navigate("/browser")
+        }).catch((error) => {
+         setErrorMess(error.message);
+        });
+        // console.log(user);
+        navigate("/browser")
         // ...
       })
       .catch((error) => {
@@ -37,6 +65,7 @@ const Login = () => {
   
     const user = userCredential.user;
     console.log(user);
+    navigate("/browser")
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -66,6 +95,7 @@ const Login = () => {
         <input  className="p-4 my-4 w-full
        bg-gray-600" 
        type="text"
+       ref={name}
         placeholder="Full Name"/>
       }
      
