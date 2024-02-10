@@ -3,11 +3,11 @@ import Header from './Header'
 import { Validat } from '../utils/Validate';
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
-import {useNavigate } from 'react-router-dom';
+
 import {  updateProfile} from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/usersSlice';
-
+import { Logo_URL, photoURL } from '../utils/Constant';
 
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
    const email = useRef(null);
    const name= useRef(null);
    const password = useRef(null);
-   const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
    const handleClick = () =>{
@@ -35,7 +35,7 @@ const Login = () => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: name.current.value,
-           photoURL: "https://avatars.githubusercontent.com/u/131537713?v=4"
+           photoURL:{photoURL}
         }).then(() => {
           const {uid,email, displayname , photoURL} = auth.currentUser;
           dispatch(
@@ -44,12 +44,12 @@ const Login = () => {
               email:email,
               displayname:displayname,
               photoURL:photoURL}));
-              navigate("/browser")
+          
         }).catch((error) => {
          setErrorMess(error.message);
         });
         // console.log(user);
-        navigate("/browser")
+    
         // ...
       })
       .catch((error) => {
@@ -65,7 +65,7 @@ const Login = () => {
   
     const user = userCredential.user;
     console.log(user);
-    navigate("/browser")
+
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -86,7 +86,7 @@ const Login = () => {
     <div >
     <Header/>
     <div className="absolute">
-    <img src="https://assets.nflxext.com/ffe/siteui/vlv3/4da5d2b1-1b22-498d-90c0-4d86701dffcc/98a1cb1e-5a1d-4b98-a46f-995272b632dd/IN-en-20240129-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="" />
+    <img src={Logo_URL} alt="" />
     </div>
     <form  onSubmit={(e)=> e.preventDefault()} className="  w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white opacity-85" action="">
      <h1 className="font-bold text-3xl py-4"   >{isSignIn?"Sign In":"Sign Up"}</h1>
