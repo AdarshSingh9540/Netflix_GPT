@@ -9,3 +9,9 @@ export const API_OPTIONS = {
         
     },
 }
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+
+export const Supported_Lang = [{identifier:"en" , name:"English"},{identifier:"hindi" , name:"Hindi"},{identifier:"spanish" , name:"Spanish"}];
+
+export const openAI_Key = "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";
