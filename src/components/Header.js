@@ -33,7 +33,7 @@ const user = useSelector((store)=>store.user);
             uid:uid,
             email:email,
             displayname:displayname,
-            photoURL:photoURL}));
+            photoURL:"https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp"}));
             navigate("/browser")
        
       } else {

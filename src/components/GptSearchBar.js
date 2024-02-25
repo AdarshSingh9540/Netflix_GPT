@@ -9,8 +9,9 @@ const GptSearchBar  = () => {
 
 const handleGPTSearchClick = async ()=>{
   console.log(searchText.current.value);
+  const gptQuery = "Act as a movies recommodation system and suggest some movies for the query"+ searchText.current.value +". give me name of only top five movies , common separated like the example ahead. Example : Gadar2, Fighter etc"
   const gptRes = await openai.chat.completions.create({
-    messages: [{ role: 'user', content: 'Say this is a test' }],
+    messages: [{ role: 'user', content: gptQuery }],
     model: 'gpt-3.5-turbo',
   });
   console.log(gptRes.choices);
