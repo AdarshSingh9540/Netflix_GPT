@@ -1,14 +1,17 @@
+// GptSearchSuggestions.js
 import { useSelector } from "react-redux";
-import MovieList from "./MoviesList";
+import MoviesList from "./MoviesList"
 
 const GptSearchSuggestions = () => {
-  const { movieNames, movieResults } = useSelector((store) => store.gpt);
+  const { movieNames , movieResults } = useSelector((store) => store.gpt);
 
-  if (!movieNames) return null;
+  if (!movieNames || movieNames.length === 0) return null;
+
   return (
-    <div className="px-3 md:px-6 py-10 m-4 bg-black  text-white rounded-md">
-      {movieNames.map((movieName,index)=> <MovieList key={index} title={movieName} movies={movieResults[0]} />)}
-    </div>
+      <div className="p-5 m-4 bg-black text-white rounded-md opacity-75">
+      {movieNames.map((movieName, Index) =><MoviesList key={movieName} title={movieName} movies={movieResults[Index]}/> )}
+        
+      </div>
   );
 };
 
