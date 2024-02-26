@@ -18,11 +18,11 @@ useUpcomingMovies();
     <>
       <Header/>
       {showGptSearch ? <GptSearch/> :
-      <>
+    (  <>
       <MainCont/>
       <SecCont/> 
       </>
-      }
+     ) }
     <div></div>
     </>
   )

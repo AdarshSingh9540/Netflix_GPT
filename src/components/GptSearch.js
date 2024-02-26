@@ -1,7 +1,8 @@
 import React from 'react'
 import GptSearchBar from './GptSearchBar'
-import MoviesSuggg from './MoviesSuggg'
 import { Logo_URL } from '../utils/Constant'
+
+import GptSearchSuggestions from './GptSearchSuggestions'
 
 const GptSearch = () => {
   return (
@@ -10,7 +11,7 @@ const GptSearch = () => {
     <img src={Logo_URL} alt="" />
     </div>
     <GptSearchBar/>
-    <MoviesSuggg/>
+    <GptSearchSuggestions/>
     </div>
   )
 }
