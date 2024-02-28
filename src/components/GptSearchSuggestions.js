@@ -1,6 +1,6 @@
 // GptSearchSuggestions.js
 import { useSelector } from "react-redux";
-import MoviesList from "./MoviesList"
+import Aimoviecard from "./Aimoviecard";
 
 const GptSearchSuggestions = () => {
   const { movieNames , movieResults } = useSelector((store) => store.gpt);
@@ -8,10 +8,18 @@ const GptSearchSuggestions = () => {
   if (!movieNames || movieNames.length === 0) return null;
 
   return (
-      <div className="p-5 m-4 bg-black text-white rounded-md opacity-75">
-      {movieNames.map((movieName, Index) =><MoviesList key={movieName} title={movieName} movies={movieResults[Index]}/> )}
-        
-      </div>
+    <div className="">
+      {movieNames.map((movieName, index) => {
+        // Check if movieResults exist and it has at least one movie
+        if (movieResults && movieResults[index] && movieResults[index].length > 0) {
+          // Get only the first movie from movieResults
+          const firstMovie = movieResults[index][0];
+          return <Aimoviecard key={firstMovie.id} movie={firstMovie} />;
+        } else {
+          return null; // If no movie found, return null
+        }
+      })}
+    </div>
   );
 };
 

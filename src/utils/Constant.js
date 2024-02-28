@@ -14,4 +14,4 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const Supported_Lang = [{identifier:"en" , name:"English"},{identifier:"hindi" , name:"Hindi"},{identifier:"spanish" , name:"Spanish"}];
 
-export const openAI_Key = "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"
+export const openAI_Key = "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"
