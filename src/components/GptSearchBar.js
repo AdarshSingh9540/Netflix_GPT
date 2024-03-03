@@ -11,14 +11,13 @@ const GptSearchBar = () => {
     const searchText = useRef(null);
     const [isListening, setIsListening] = useState(false);
 
-    // search movies in TMDB
     const searchMovieTMDB = async (movie) => {
         const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`, API_OPTIONS);
         const json = await data.json();
         return json.results;
     };
 
-    // Voice recognition setup
+   
     const handleVoiceRecognition = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
@@ -62,7 +61,7 @@ const GptSearchBar = () => {
 
     return (
         <div className='pt-[40%] md:pt-[8%] flex justify-center'>
-            <form onSubmit={(e) => e.preventDefault()} action='' className='w-[98%] md:w-1/2 bg-black grid grid-cols-12 mx-8 p-2 mt-8'>
+            <form onSubmit={(e) => e.preventDefault()} action='' className='w-[99%] md:w-1/2 bg-black grid grid-cols-12 mx-2 md:mx-8 p-1 md:p-2 mt-8'>
                 <input ref={searchText} className='searchEl p-4 md:p-4  md:m-4 w-[94%] col-span-10 pl-12 md:pl-16' type='text' placeholder={lang[langKey].gptSearchPlaceholder} />
                 <img src={isListening ?
                  "https://raw.githubusercontent.com/meetparikh1202/voice-search-multi-lang/main/assets/mic-active.png" : 
