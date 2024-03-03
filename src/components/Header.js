@@ -65,12 +65,12 @@ const user = useSelector((store)=>store.user);
       {Supported_Lang.map(lang =>   <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
       </select>
       }
-      <button className='py-2 px-4 mx-4 my-2 bg-purple-700 text-white rounded-lg font-bold'
+      <button className='py-1 px-4 md:px-4 mx-2 md:mx-4 my-1 md:my-2 bg-purple-700 text-white rounded-lg font-bold'
       onClick={handleGptSearchClick}
       > {showGptSearch ?"Home" :"GPT Search"}
        </button>
       <img className="hidden md:block w-14 h-14 p-2" src={user.photoURL}alt="" />
-      <button onClick={handleSignOut} className="text-white font-bold bg-">(Sign Out)</button>
+      <button onClick={handleSignOut} className="text-white font-bold bg-blue-800 py-1 px-4 md:px-4 mx-2 md:mx-4 my-1 md:my-2 rounded-lg">Sign Out</button>
     </div>
     }
     </div>
