@@ -68,7 +68,7 @@ const GptSearchBar = () => {
                  "https://raw.githubusercontent.com/meetparikh1202/voice-search-multi-lang/main/assets/mic.png"} 
                  className='voiceSearch cursor-pointer absolute  w-10 mt-2 md:mt-6 ml-2 md:ml-6 items-center' alt="voice icon"
                   onClick={handleVoiceRecognition} />
-                <button className=' py-0 md:py-3  md:px-4 bg-red-800 text-white rounded-lg col-span-2  md:m-4' onClick={handleGPTSearchClick}>{lang[langKey].search}</button>
+                <button className=' py-0 md:py-3 px-1  md:px-4 bg-red-800 text-white rounded-lg col-span-2  md:m-4' onClick={handleGPTSearchClick}>{lang[langKey].search}</button>
             </form>
         </div>
     );
