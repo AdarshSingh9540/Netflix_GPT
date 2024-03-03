@@ -6,7 +6,7 @@ import GptSearchSuggestions from './GptSearchSuggestions'
 const GptSearch = () => {
   return (
     <><div className="fixed -z-10">
-    <img className="md:h-screen md:object-cover h-screen object-cover md:h-auto md:object-contain" src={Logo_URL} alt="" />
+    <img className="md:full md:object-cover h-screen object-cover md:h-auto " src={Logo_URL} alt="" />
     </div>
     <div className="">
     <GptSearchBar/>
