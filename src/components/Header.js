@@ -54,11 +54,11 @@ const user = useSelector((store)=>store.user);
     dispatch(changeLanguage(e.target.value));
   }
   return (
-    <div className="absolute px-7 py-2  bg-gradient-to-b from-black md:bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex justify-between">
+    <div className="absolute px-7 py-2  bg-gradient-to-b from-black md:bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex-row justify-between">
     <img  className='w-44 mx-auto md:mx-0' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo" />
 
     {
-      user &&  <div className="flex p-2"> 
+      user &&  <div className="flex p-2 justify-between"> 
       {
         showGptSearch &&
         <select className='p-2 bg-gray-800 text-white m-4' name="" id="" onClick={handleLangChange}>
@@ -69,7 +69,7 @@ const user = useSelector((store)=>store.user);
       onClick={handleGptSearchClick}
       > {showGptSearch ?"Home" :"GPT Search"}
        </button>
-      <img className="w-14 h-14 p-2" src={user.photoURL}alt="" />
+      <img className="hidden md:block w-14 h-14 p-2" src={user.photoURL}alt="" />
       <button onClick={handleSignOut} className="text-white font-bold bg-">(Sign Out)</button>
     </div>
     }
