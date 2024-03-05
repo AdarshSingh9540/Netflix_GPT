@@ -61,7 +61,7 @@ const user = useSelector((store)=>store.user);
       user &&  <div className="flex m-1 md:p-2 justify-between"> 
       {
         showGptSearch &&
-        <select className=' md:p-2 bg-gray-800 text-white  md:m-4' name="" id="" onClick={handleLangChange}>
+        <select className=' md:p-2 bg-gray-800 text-white  md:m-2 ' name="" id="" onClick={handleLangChange}>
       {Supported_Lang.map(lang =>   <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
       </select>
       }
